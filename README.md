@@ -1,8 +1,9 @@
 # Women Through the Lens of The New York Times: Data Journalism Project. 
-
+*****************************************************************************************************************************************************************
 The **goal** of this project is to investigate womens' representation in The New York Times though the sentiment analysis, frequent term visualization and topic modeling.
 
 For this investigation I scraped The New York Times data through the [Archive API](https://developer.nytimes.com/docs/archive-product/1/overview) of The New York Times Developer Portal. First, you have to obtain the API key [here](https://developer.nytimes.com/). It's free! The NYT just likes the concept of the regulated flood gate. Since this type of the API is good for the bulk data collection, it doesn't allow for effective prior filtering. Please follow the instructions in the notebooks if you wish to re-create the experiment.
+*****************************************************************************************************************************************************************
 *****************************************************************************************************************************************************************
 **data_collection_topics** is the very first notebook in the series. I broke down the data collection into smaller increments in order not to overload the API as well as the internet connection. The helper function scrapes the data for the specified time period and saves it into the **headlines.csv** file: one file for each corresponding month for each year requested, which you can further concatenate into one dataframe for further analysis and filtering.
 
@@ -11,12 +12,13 @@ I decided to run the generic topic modeling first in order to make sure that the
 In this notebook we run topic modeling using the Latent Dirichlet Allocation (LDA) and gensim. 
 Prevalent **topics** discovered: COVID-19, police brutality, politics and social policies, election, climate crisis and natural disasters, race and gender representation. Even though all the topics are equally important and serious, I went with the gender representation.
 *****************************************************************************************************************************************************************
+*****************************************************************************************************************************************************************
 **project5_data_gather** is the next notebook in our series. Since we chose a large timeframe - 70 years, the code needs to be run in chunks. A decade seems like an optimal timeframe for each round. As the result, we will have the articles' headline and keywords for the range 1950-2020.
 The *helper functions* allow for automated the data collection: <br>
-*send_request* prepares the request into the archive for a given date, and returns a response.
-*is_valid* checks whether the article falls into the requested timeframe, confirms whether the headline is present, thus insuring the article's validity, and returns a binary result of is_in_range and has_headline.
-*parse_response* turns the json response into a dataframe. data here is a dictionary where we specify what we want our columns to be. If everything is valid, it appends to the dictionary and returns a dataframe.
-*get_data* uses send_request and parse_response as well as the dates specified by user, and then saves the headlines and other info to csv files corresponding to each month within the range.
+* *send_request* prepares the request into the archive for a given date, and returns a response.<br>
+* *is_valid* checks whether the article falls into the requested timeframe, confirms whether the headline is present, thus insuring the article's validity, and returns a binary result of is_in_range and has_headline. <br>
+* *parse_response* turns the json response into a dataframe. data here is a dictionary where we specify what we want our columns to be. If everything is valid, it appends to the dictionary and returns a dataframe. <br>
+* *get_data* uses send_request and parse_response as well as the dates specified by user, and then saves the headlines and other info to csv files corresponding to each month within the range. <br>
 
 Result: 11,472,902 articles collected.
 *****************************************************************************************************************************************************************
@@ -33,6 +35,6 @@ contains data filtered from the big **df** based on the presence of certain keyw
 * **persons**: <br>
 dataframe that I obtained by searching for certain names mentioned in the headlines, e.g. Serena Williams, Harriet Tubman and Malala Yousafzai.
 
-**Note**: The term "strong women" is used subjectively according to the criteria defined by me for the purpose of this exercise. It's by no means meant to exclude anyone from this group. I will appreciate any advice and guidance for expanding and enriching this dataset.
+**Note**: The term "strong women" is used subjectively according to the criteria defined by me for the purpose of this exercise, e.g women in politics, entrepreneurship, civil rights movement, social activism etc. It's by no means meant to exclude anyone from this group. I will appreciate any advice and guidance for expanding and enriching this dataset.
 
-Further comments, storyline and visualizations can be found in the slidedeck attached.
+Further comments, storyline and visualizations can be found in the slidedeck attached. If you have any questions, please don't hesitate to reach out!
